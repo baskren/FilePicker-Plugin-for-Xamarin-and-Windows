@@ -1,25 +1,22 @@
-﻿using Plugin.FilePicker.Abstractions;
-using System;
+﻿using System;
+using Plugin.FilePicker.Abstractions;
 
 namespace Plugin.FilePicker
 {
-    /// <summary>
-    /// Cross-platform FilePicker implementation
-    /// </summary>
-    public static class CrossFilePicker
+    public class CrossFolderPicker
     {
-        internal static Func<IFilePicker> CreateFilePicker { get; set; } = NetStandardCreateFilePicker;
+        internal static Func<IFolderPicker> CreateFolderPicker { get; set; } = NetStandardCreateFolderPicker;
 
-        static IFilePicker _implementation = null;
 
+        static IFolderPicker _implementation = null;
         /// <summary>
         /// Current file picker plugin implementation to use
         /// </summary>
-        public static IFilePicker Current
+        public static IFolderPicker Current
         {
             get
             {
-                var ret = _implementation ?? CreateFilePicker.Invoke();
+                var ret = _implementation ?? CreateFolderPicker.Invoke();
                 if (ret == null)
                 {
                     throw NotImplementedInReferenceAssembly();
@@ -29,12 +26,12 @@ namespace Plugin.FilePicker
             }
         }
 
-        
+
         /// <summary>
         /// Creates file picker instance for the platform
         /// </summary>
         /// <returns>file picker instance</returns>
-        private static IFilePicker NetStandardCreateFilePicker()
+        private static IFolderPicker NetStandardCreateFolderPicker()
         {
 #if NETSTANDARD1_0 || NETSTANDARD2_0
             return null;
@@ -42,7 +39,6 @@ namespace Plugin.FilePicker
             return new FilePickerImplementation();
 #endif
         }
-
 
 
         /// <summary>
@@ -54,4 +50,5 @@ namespace Plugin.FilePicker
             new NotImplementedException(
                 "This functionality is not implemented in the portable version of this assembly. You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.");
     }
+
 }

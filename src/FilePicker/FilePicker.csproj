@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Plugin.FilePicker</RootNamespace>
+    <AssemblyName>Plugin.FilePicker</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Plugin.FilePicker\IFilePicker.shared.cs">
+      <Link>IFilePicker.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.FilePicker\FilePickerEventArgs.shared.cs">
+      <Link>FilePickerEventArgs.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.FilePicker\FilePickerCancelledEventArgs.shared.cs">
+      <Link>FilePickerCancelledEventArgs.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.FilePicker\FileData.shared.cs">
+      <Link>FileData.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\Plugin.FilePicker\CrossFilePicker.shared.cs">
+      <Link>CrossFilePicker.shared.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>
